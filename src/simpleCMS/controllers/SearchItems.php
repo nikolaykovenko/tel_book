@@ -24,10 +24,16 @@ class SearchItems extends AController
      */
     public function execute()
     {
-        
+        if (isset($_GET['search']) and !empty($_GET['search'])) {
+            $where = "`tel` like :search";
+            $whereValues = ['search' => '%' . $_GET['search'] . '%'];
+        } else {
+            $where = '';
+            $whereValues = [];
+        }
         
         $telModel = new TelNumbers();
-        $this->setVariable('telData', $telModel->findAll());
+        $this->setVariable('telData', $telModel->findAll($where, $whereValues));
         
         return $this->render('telephones-list.twig');
     }

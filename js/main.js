@@ -17,7 +17,7 @@ function ajaxQuery(data, response) {
         response = ajaxDefaultResponse;
     }
 
-    $.get('index.php', data, response);
+    return $.get('index.php', data, response);
 }
 
 
@@ -42,14 +42,15 @@ function addItem() {
 function refreshItemsTable(search) {
     var block = $('[data-telehpones-table]');
     
-    block.fadeTo(200, .5);
-    ajaxQuery({'mode': 'SearchItems', 'search': search}, function (data) {
+    block.stop(true, true, true).fadeTo(200, .5);
+    return ajaxQuery({'mode': 'SearchItems', 'search': search}, function (data) {
         block.fadeTo(200, 1);
         block.html(data);
     });
 }
 
 
+var request;
 $(function () {
     refreshItemsTable();
     
@@ -64,6 +65,14 @@ $(function () {
     $('body').on('click', '[data-add]', function () {
         addItem();
     });
+
+    $('[data-search-query]')[0].oninput = function() {
+        if (typeof request !== 'undefined') {
+            request.abort();
+        }
+
+        request = refreshItemsTable($(this).val());
+    };
 
 
     $('body').on('submit', 'form[data-ajax-form]', function (e) {

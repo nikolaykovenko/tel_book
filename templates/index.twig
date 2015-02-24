@@ -24,8 +24,12 @@
     <section class="tel-list">
         <h2>Список номеров</h2>
         <header class="tel-list-header">
-            Форма поиска
-            <input type="button" class="btn btn-default" value="Добавить запись" data-add>
+            <div class="row">
+                <div class="col-sm-9">{% include 'forms/search-form.twig' %}</div>
+                <div class="col-sm-3 text-right">
+                    <input type="button" class="btn btn-default" value="Добавить запись" data-add>
+                </div>
+            </div>
         </header>
         <div data-telehpones-table>
             <div class="text-center">
