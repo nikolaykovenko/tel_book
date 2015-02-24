@@ -1,0 +1,25 @@
+<table class="table table-bordered table-hover table-condensed">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Номер телефона</th>
+        <th>Имя</th>
+        <th>Город</th>
+        <th>Операции</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in telData %}
+        <tr data-item-id="{{ item.id }}">
+            <td class="text-center">{{ item.id }}</td>
+            <td>{{ item.tel }}</td>
+            <td>{{ item.fio }}</td>
+            <td>{{ item.city }}</td>
+            <td class="text-center">
+                <span class="glyphicon glyphicon-pencil edit-link" data-edit></span>
+                <span class="glyphicon glyphicon-trash delete-link" data-delete></span>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

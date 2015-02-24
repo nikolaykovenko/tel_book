@@ -1,0 +1,9 @@
+{% extends "forms/edit-form.twig" %}
+
+{% block form_header %}
+    <form action="index.php?mode=insertItem" method="post" data-ajax-form>
+{% endblock %}
+
+{% block submit_button %}
+    <input type="submit" class="btn btn-success" value="Добавить">
+{% endblock %}

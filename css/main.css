@@ -1,0 +1,14 @@
+.tel-list table {
+    width: 100%;
+}
+
+
+.edit-link,
+.delete-link {
+    cursor: pointer;
+}
+
+
+.tel-list-header {
+    margin-bottom: 10px;
+}
