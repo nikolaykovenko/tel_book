@@ -74,6 +74,9 @@ class ApplicationHelper
         if (empty($this->renderer)) {
             $loader = new \Twig_Loader_Filesystem($this->getConfigParam('templatesPath'));
             $this->renderer = new \Twig_Environment($loader);
+            
+            $telNumberFilter = new \Twig_SimpleFilter('telNumber', ['simpleCMS\model\TelNumbers', 'telFormat']);
+            $this->renderer->addFilter('telNumber', $telNumberFilter);
         }
         
         return $this->renderer->render($template, $variables);
