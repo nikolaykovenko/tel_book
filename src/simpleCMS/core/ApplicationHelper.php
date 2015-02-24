@@ -57,7 +57,12 @@ class ApplicationHelper
                 throw new \Exception('DB config is not set');
             }
             
-            $this->dbh = new \PDO($config['dsn'], $config['user'], $config['pass']);
+            $this->dbh = new \PDO(
+                $config['dsn'],
+                $config['user'],
+                $config['pass'],
+                [\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES {$config['charset']}"]
+            );
         }
         
         return $this->dbh;

@@ -7,9 +7,10 @@
 
 return [
     'db' => [
-        'dsn' => 'mysql:host=localhost;dbname=e_groshi_tels;charset=utf8',
+        'dsn' => 'mysql:host=localhost;dbname=e_groshi_tels',
         'user' => 'root',
         'pass' => '123',
+        'charset' => 'utf8',
     ],
     'templatesPath' => __DIR__ . '/templates',
 ];
