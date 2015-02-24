@@ -21,13 +21,17 @@
     
     <div data-action-form></div>
     
-    <section class="tel-list" data-telehpones-table>
+    <section class="tel-list">
         <h2>Список номеров</h2>
         <header class="tel-list-header">
             Форма поиска
             <input type="button" class="btn btn-default" value="Добавить запись" data-add>
         </header>
-        {% include 'telephones-list.twig' %}
+        <div data-telehpones-table>
+            <div class="text-center">
+                Идет загрузка данных...
+            </div>
+        </div>
     </section>
 </div>
 </body>

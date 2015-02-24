@@ -5,8 +5,9 @@ function ajaxDefaultResponse(data) {
     if (result.status == 'ok') {
         $('[data-action-form] form').slideUp(200, function() {
             $('[data-action-form]').html('');
-            refreshItemsTable();
-        })
+        });
+
+        refreshItemsTable();
     }
 
 }
@@ -39,10 +40,19 @@ function addItem() {
 }
 
 function refreshItemsTable(search) {
+    var block = $('[data-telehpones-table]');
+    
+    block.fadeTo(200, .5);
+    ajaxQuery({'mode': 'SearchItems', 'search': search}, function (data) {
+        block.fadeTo(200, 1);
+        block.html(data);
+    });
 }
 
 
 $(function () {
+    refreshItemsTable();
+    
     $('[data-telehpones-table]').on('click', '[data-delete]', function () {
         deleteItem($(this).parents('tr[data-item-id]').data('item-id'));
     });

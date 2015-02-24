@@ -34,7 +34,7 @@ abstract class AItemController extends AController
 
         $item = $model->findOne("id = :id", ['id' => $id]);
         if (empty($item)) {
-            return 'Элемент #' . $_GET['id'] . ' не найден';
+            throw new \Exception('Элемент #' . $_GET['id'] . ' не найден');
         }
         
         return $item;
